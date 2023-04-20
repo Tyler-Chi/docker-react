@@ -1,0 +1,13 @@
+# docker run -t -p 3000:3000 -v /home/node/app/node_modules -v ~/docker_practice/frontend:/home/node/app react_fe
+
+version: '3'
+services:
+  web:
+    build:
+      context: . # specifies where we want files/folders to be pulled from
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/node/app/node_modules
+      - ~/docker_practice/frontend:/home/node/app
