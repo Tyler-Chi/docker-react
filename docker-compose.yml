@@ -11,3 +11,13 @@ services:
     volumes:
       - /home/node/app/node_modules
       - ~/docker_practice/frontend:/home/node/app
+  # basically build same container, but run tests
+  tests:
+    build:
+      context: . # specifies where we want files/folders to be pulled from
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /home/node/app/node_modules
+      - ~/docker_practice/frontend:/home/node/app
+    # override the CMD in Dockerfile
+    command: ["npm", "run", "test"]
